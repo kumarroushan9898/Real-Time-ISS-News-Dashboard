@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/news",
+      "destination": "https://api.freenewsapi.io/v1/news"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Custom dark mode utilities if needed */
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+.dark .leaflet-container {
+  filter: brightness(0.8) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+
+/* ── Fix: Leaflet tiles/controls have very high z-indices.
+   Wrap the map in a new stacking context so they never bleed
+   above the sticky header (which uses Tailwind's z-50 = 50). ── */
+.leaflet-map-wrapper {
+  position: relative;
+  isolation: isolate;   /* creates stacking context */
+  z-index: 0;           /* kept low so header stays on top */
+}
+
+/* Ensure Leaflet pane z-indices stay inside their container */
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1 !important;
+}
+
+.leaflet-control {
+  z-index: 2 !important;
+}
+
