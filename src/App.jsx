@@ -29,7 +29,7 @@ function App() {
 
   const fetchISSPosition = async () => {
     try {
-      const response = await fetch('http://api.open-notify.org/iss-now.json');
+      const response = await fetch('/api/iss-now');
       const data = await response.json();
 
       const newPos = {

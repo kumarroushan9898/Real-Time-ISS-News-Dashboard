@@ -9,7 +9,7 @@ export default function PeopleInSpace() {
   useEffect(() => {
     const fetchPeople = async () => {
       try {
-        const response = await axios.get('http://api.open-notify.org/astros.json');
+        const response = await axios.get('/api/astros');
         // Filter those only on ISS
         const issPeople = response.data.people.filter(p => p.craft === 'ISS');
         setPeople(issPeople);
